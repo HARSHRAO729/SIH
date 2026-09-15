@@ -1,0 +1,9 @@
+[
+  {
+    "id": "tk-patent-bar",
+    "text": "What are not inventions: an invention which in effect is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.",
+    "source": "Patents Act, 1970 — Section 3(p)",
+    "jurisdiction": "india",
+    "product_types": ["classical", "new-drug"]
+  }
+]

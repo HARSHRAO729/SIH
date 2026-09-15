@@ -3,6 +3,7 @@
 Assistant that answers AYUSH IP/regulatory questions with cited legal sources. Prototype.
 
 ## Layout
+- `NEXT_STEPS.md` — **what to do next and who does it. Start here.**
 - `CONTRACT.md` — API + snippet JSON shape. **Read first.**
 - `backend/mock_server.py` — mock backend (no installs)
 - `frontend/` — Ritik + Naitri

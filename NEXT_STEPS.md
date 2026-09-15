@@ -69,3 +69,46 @@ Polish (Naitri, Yashvi, Dhyani) → Harden + backup screencast (Divakaran) → t
 - Don't push directly to `main`. Branch (`ritik/chat-screen`), push, open a PR.
 - Only touch your own folder unless you've agreed otherwise: `frontend/` (Ritik, Naitri), `backend/` (Harsh), `data/` (Yashvi).
 - Changing `CONTRACT.md` = tell Harsh and Ritik first.
+
+---
+
+## ✅ Update — HARSH's part is done (backend ready)
+
+The real backend is in `main`. It follows the same `CONTRACT.md` as the mock, so nothing changes for the front-end except the base URL.
+
+```bash
+python3 backend/server.py                  # live (needs GEMINI_API_KEY in .env)
+MODE=scripted python3 backend/server.py    # no internet needed, hero answers only
+python3 backend/mock_server.py             # mock, for front-end work
+```
+
+Left on Harsh's side (small, waiting on others): test live with the real API key, swap in Yashvi's `data/snippets.json`, replace scripted answers with her verified ones.
+
+## Next step — who does what now
+
+### Ritik — connect the front-end (top priority)
+1. Keep building against the mock until the chat screen + citation panel work.
+2. Then run `python3 backend/server.py` and point `API_BASE` at it. Test: churna (India), plant (India), abroad (International), and one random question → must show the **declined** state.
+3. Handle `502` → show "Something went wrong, try again".
+4. Tell Harsh when screens are ready → joint integration test (Phase 2).
+
+### Naitri — unchanged
+Landing, classifier flow, "How it works" screen, styling. The classifier must send one of: `classical` | `new-drug` | `plant-research` | `export` | `unknown`.
+
+### Yashvi — knowledge pack (now blocking the real answers)
+1. Push `data/snippets.json` (~15–20 real snippets). **Every snippet needs `keywords`** — words a user would type. Copy the shape from `data/snippets.sample.json`.
+2. Write verified ideal answers for the 3 hero questions → `data/hero_answers.md`.
+3. Tell Harsh → he updates `data/scripted_answers.json` and checks that each hero question finds its snippet.
+
+### Dhyani — deck + Q&A
+Use this for "is this real RAG?": *"The demo retrieves from a curated pack by keyword and makes the model cite only snippets it was given; if there's no source, it refuses. The full version replaces keyword matching with semantic search over the full legal corpus."*
+
+### Divakaran — start testing the backend now
+1. Run `python3 backend/test_mock.py` → must print `ok`.
+2. Run the server in `scripted` mode and hit it with the test cases (hero questions, random question, bad input → `400`).
+3. Log failures as GitHub Issues, tag Harsh.
+
+### Harsh — after Yashvi's hand-off
+1. Add `GEMINI_API_KEY` to `.env`, test live answers.
+2. Load Yashvi's snippets; if good questions come back declined, lower `MIN_SCORE` to `1` in `.env` or ask her for more keywords.
+3. Integration test with Ritik → then Phase 3 (polish).

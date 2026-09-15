@@ -4,6 +4,101 @@
     "text": "What are not inventions: an invention which in effect is traditional knowledge or which is an aggregation or duplication of known properties of traditionally known component or components.",
     "source": "Patents Act, 1970 — Section 3(p)",
     "jurisdiction": "india",
-    "product_types": ["classical", "new-drug"]
+    "product_types": [
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "patent",
+      "churna",
+      "classical",
+      "formulation",
+      "traditional",
+      "ayurveda",
+      "invention"
+    ]
+  },
+  {
+    "id": "ayush-licence",
+    "text": "No person shall manufacture for sale any Ayurvedic, Siddha or Unani drug except under a licence issued by the Licensing Authority.",
+    "source": "Drugs and Cosmetics Rules, 1945 — Rule 153",
+    "jurisdiction": "india",
+    "product_types": [
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "sell",
+      "manufacture",
+      "licence",
+      "license",
+      "churna",
+      "classical",
+      "ayurveda",
+      "market"
+    ]
+  },
+  {
+    "id": "abs-nba-approval",
+    "text": "No person shall obtain any biological resource occurring in India or knowledge associated thereto for research or for commercial utilisation without previous approval of the National Biodiversity Authority.",
+    "source": "Biological Diversity Act, 2002 — Section 3",
+    "jurisdiction": "india",
+    "product_types": [
+      "plant-research",
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "plant",
+      "medicinal",
+      "herb",
+      "research",
+      "biodiversity",
+      "benefit",
+      "sharing",
+      "approval"
+    ]
+  },
+  {
+    "id": "intl-pct",
+    "text": "An international application filed under the PCT has the effect of a national application in each designated State.",
+    "source": "Patent Cooperation Treaty — Article 11(3)",
+    "jurisdiction": "international",
+    "product_types": [
+      "export",
+      "new-drug",
+      "classical"
+    ],
+    "keywords": [
+      "abroad",
+      "international",
+      "foreign",
+      "countries",
+      "patent",
+      "protect",
+      "export"
+    ]
+  },
+  {
+    "id": "intl-madrid",
+    "text": "A trademark can be protected in multiple member countries by filing a single international application.",
+    "source": "Madrid Protocol (WIPO)",
+    "jurisdiction": "international",
+    "product_types": [
+      "export",
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "abroad",
+      "international",
+      "foreign",
+      "countries",
+      "brand",
+      "trademark",
+      "protect",
+      "export",
+      "selling"
+    ]
   }
 ]

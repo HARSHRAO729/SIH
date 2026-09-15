@@ -32,7 +32,7 @@ Test with: `churna` (India), `plant` (India), `abroad` (International), anything
 Work in `frontend/` with Ritik; agree folder split before starting.
 
 ### Yashvi — Knowledge pack
-1. Create `data/snippets.json` using the exact shape in `data/snippets.sample.json`.
+1. Create `data/snippets.json` using the exact shape in `data/snippets.sample.json` — **including `keywords`** (words a user would type, e.g. "churna", "sell abroad"). Without them the backend can't find the snippet.
 2. ~15–20 **real, correctly cited** snippets: TK patent bar, prior-art library, GI basics, ABS/biodiversity, AYUSH licensing, labelling/advertising, PCT, Madrid.
 3. Write the ideal sourced answer for each of the 3 hero questions → `data/hero_answers.md` (with Dhyani).
 4. Keep a sources list for the references slide.
@@ -40,12 +40,13 @@ Work in `frontend/` with Ritik; agree folder split before starting.
 Hand-off: push `data/snippets.json` and tell Harsh.
 
 ### Harsh — Real backend
-1. `backend/` real server, same contract as the mock.
-2. Load `data/snippets.json`; filter by jurisdiction + product_type; keyword-match the question.
-3. No matching snippet → `declined: true` (never call the LLM without sources).
-4. Call Gemini with the snippets in the prompt; return the snippets as `sources`.
-5. Scripted mode for the 3 hero questions + a switch `MODE=live|scripted|mock`.
-6. API key in `.env` (never committed).
+- [x] `backend/server.py`, same contract as the mock, `MODE=live|scripted|mock`
+- [x] Snippet retrieval (jurisdiction + product_type filter, keyword match)
+- [x] No snippet / invalid citation → `declined` (LLM never called without sources)
+- [x] Gemini call + citation gate; scripted fallback if Gemini fails on a hero question
+- [ ] Add `GEMINI_API_KEY` to `.env` and test live answers for real
+- [ ] Swap to Yashvi's `data/snippets.json`; tune `MIN_SCORE` if answers decline too often
+- [ ] Replace `data/scripted_answers.json` text with Yashvi's verified ideal answers
 
 ### Dhyani — Pitch + deck
 1. Outline the story: problem → solution → live demo → real architecture.

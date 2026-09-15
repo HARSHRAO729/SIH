@@ -1,0 +1,39 @@
+[
+  {
+    "keywords": [
+      "churna"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "tk-patent-bar",
+      "ayush-licence"
+    ],
+    "answer": "A classical churna made from a formulation already described in authoritative AYUSH texts is not patentable in India, because it is traditional knowledge. You can still manufacture and sell it once you hold an AYUSH manufacturing licence for a classical (ASU) medicine.",
+    "confidence": "high"
+  },
+  {
+    "keywords": [
+      "plant"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "abs-nba-approval"
+    ],
+    "answer": "Using an Indian medicinal plant for research or commercial use requires prior approval from the National Biodiversity Authority, and benefits may need to be shared with local communities.",
+    "confidence": "med"
+  },
+  {
+    "keywords": [
+      "abroad",
+      "export",
+      "international"
+    ],
+    "jurisdiction": "international",
+    "source_ids": [
+      "intl-pct",
+      "intl-madrid"
+    ],
+    "answer": "To protect your product in several countries, you can file one international patent application under the PCT, and register your brand in many countries at once through the Madrid System.",
+    "confidence": "med"
+  }
+]

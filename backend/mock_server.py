@@ -1,14 +1,11 @@
 """Mock backend for IP-SAKTI. Stdlib only: `python3 backend/mock_server.py`.
 
 Returns hard-coded replies in the CONTRACT.md shape so the front-end can be built
-before the real backend exists.
+before the real backend exists. Same server as server.py, with MODE=mock.
 Keywords pick a hero reply; anything else returns the "declined" state.
 """
-import json
 import time
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-PORT = 8000
 DELAY = 0.8  # seconds, so the "typing..." state is visible
 
 REPLIES = {
@@ -44,7 +41,8 @@ DECLINED = {
 }
 
 
-def reply_for(question):
+def reply_for(question, delay=0):
+    time.sleep(delay)
     q = question.lower()
     for key, reply in REPLIES.items():
         if key in q:
@@ -52,51 +50,6 @@ def reply_for(question):
     return {**DECLINED, "declined": True, "mode": "mock"}
 
 
-def validate(body):
-    if not isinstance(body, dict):
-        return "body must be a JSON object"
-    if not str(body.get("question", "")).strip():
-        return "question is required"
-    if body.get("jurisdiction") not in ("india", "international"):
-        return "jurisdiction must be india or international"
-    if not body.get("product_type"):
-        return "product_type is required"
-    return None
-
-
-class Handler(BaseHTTPRequestHandler):
-    def send_json(self, status, data):
-        raw = json.dumps(data).encode()
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(raw)))
-        self.send_header("Access-Control-Allow-Origin", "*")  # ponytail: open CORS, local demo only
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.end_headers()
-        self.wfile.write(raw)
-
-    def do_OPTIONS(self):
-        self.send_json(204, {})
-
-    def do_GET(self):
-        if self.path == "/api/health":
-            return self.send_json(200, {"ok": True, "mode": "mock"})
-        self.send_json(404, {"error": "not found"})
-
-    def do_POST(self):
-        if self.path != "/api/ask":
-            return self.send_json(404, {"error": "not found"})
-        try:
-            body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"null")
-        except json.JSONDecodeError:
-            return self.send_json(400, {"error": "invalid JSON"})
-        err = validate(body)
-        if err:
-            return self.send_json(400, {"error": err})
-        time.sleep(DELAY)
-        self.send_json(200, reply_for(body["question"]))
-
-
 if __name__ == "__main__":
-    print(f"Mock backend on http://localhost:{PORT}")
-    ThreadingHTTPServer(("", PORT), Handler).serve_forever()
+    import server
+    server.serve("mock")

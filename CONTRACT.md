@@ -45,7 +45,7 @@ Response `200`
 | declined | bool | true = no source found, assistant refuses to guess. UI shows this state distinctly |
 | mode | string | `mock` \| `live` \| `scripted` — for debugging/badge only |
 
-Response `400`
+Response `400` (bad input) / `502` (answer engine unavailable — show "try again")
 ```json
 { "error": "question is required" }
 ```
@@ -64,7 +64,11 @@ Response `400`
   "text": "Short quoted rule, 1–3 sentences.",
   "source": "Patents Act, 1970 — Section 3(p)",
   "jurisdiction": "india",
-  "product_types": ["classical", "new-drug"]
+  "product_types": ["classical", "new-drug"],
+  "keywords": ["patent", "churna", "formulation"]
 }
 ```
+
+`keywords` (optional but important): plain words a user would type that the legal quote doesn't contain.
+Retrieval is keyword matching, so a snippet without them is hard to find (e.g. Section 3(p) never says "churna").
 See `data/snippets.sample.json`.

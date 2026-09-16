@@ -1,6 +1,96 @@
 [
   {
     "keywords": [
+      "brand",
+      "trademark",
+      "logo",
+      "ब्रांड"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "trademark-india"
+    ],
+    "confidence": "high",
+    "answer": "The formulation itself is not patentable, but your brand is protectable. Registering a trade mark gives you the exclusive right to that name and logo for your goods, which is what stops a competitor selling a churna under your name."
+  },
+  {
+    "keywords": [
+      "what do i need",
+      "label",
+      "packaging",
+      "licence number"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "ayush-licence",
+      "ayush-labelling"
+    ],
+    "confidence": "high",
+    "answer": "Two things before you can sell: a manufacturing licence for the ASU drug, and a label that carries the drug name, the licence number, the full list of ingredients and the words 'Ayurvedic medicine'."
+  },
+  {
+    "keywords": [
+      "benefit",
+      "share",
+      "communities",
+      "royalty",
+      "लाभ"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "abs-benefit-sharing"
+    ],
+    "confidence": "high",
+    "answer": "Yes. When the National Biodiversity Authority grants approval it also sets the terms for sharing benefits with the benefit claimers, including the local communities the resource or the knowledge came from."
+  },
+  {
+    "keywords": [
+      "someone else",
+      "prior art",
+      "tkdl",
+      "steal",
+      "copy"
+    ],
+    "jurisdiction": "india",
+    "source_ids": [
+      "tkdl-prior-art",
+      "tk-patent-bar"
+    ],
+    "confidence": "high",
+    "answer": "Documented traditional knowledge sits in the TKDL, which patent offices search as prior art, and Indian law already bars patents on traditional knowledge. Together those are what get such applications refused."
+  },
+  {
+    "keywords": [
+      "brand",
+      "trademark",
+      "multiple countries",
+      "ब्रांड"
+    ],
+    "jurisdiction": "international",
+    "source_ids": [
+      "intl-madrid"
+    ],
+    "confidence": "high",
+    "answer": "One application under the Madrid Protocol covers the brand in many member countries at once, instead of filing a separate trade mark in each one."
+  },
+  {
+    "keywords": [
+      "outside india",
+      "indian patent",
+      "automatically",
+      "everywhere",
+      "territorial"
+    ],
+    "jurisdiction": "international",
+    "source_ids": [
+      "intl-territorial",
+      "intl-pct"
+    ],
+    "confidence": "high",
+    "answer": "No. Patents are territorial, so an Indian patent protects you only in India. To be covered elsewhere you have to file in those countries, and the PCT route lets you start that with a single international application."
+  },
+  {
+    "keywords": [
       "churna",
       "चूर्ण"
     ],

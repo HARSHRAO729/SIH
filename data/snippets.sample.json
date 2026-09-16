@@ -129,5 +129,103 @@
       "उत्पाद",
       "बेचने"
     ]
+  },
+  {
+    "id": "trademark-india",
+    "text": "A trade mark may be registered in respect of goods or services, giving the proprietor the exclusive right to use it in relation to those goods or services.",
+    "source": "Trade Marks Act, 1999 — Sections 18 and 28",
+    "jurisdiction": "india",
+    "product_types": [
+      "classical",
+      "new-drug",
+      "export"
+    ],
+    "keywords": [
+      "brand",
+      "trademark",
+      "name",
+      "logo",
+      "protect",
+      "ब्रांड",
+      "ट्रेडमार्क"
+    ]
+  },
+  {
+    "id": "ayush-labelling",
+    "text": "The label of an Ayurvedic, Siddha or Unani drug shall state the name of the drug, the licence number and the true list of ingredients, and shall bear the words 'Ayurvedic (Siddha/Unani) medicine'.",
+    "source": "Drugs and Cosmetics Rules, 1945 — Rule 161",
+    "jurisdiction": "india",
+    "product_types": [
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "label",
+      "labelling",
+      "packaging",
+      "market",
+      "sell",
+      "need",
+      "लेबल"
+    ]
+  },
+  {
+    "id": "abs-benefit-sharing",
+    "text": "The National Biodiversity Authority shall, while granting approval, ensure equitable sharing of benefits arising out of the use of the biological resource with the benefit claimers, including local communities.",
+    "source": "Biological Diversity Act, 2002 — Section 21",
+    "jurisdiction": "india",
+    "product_types": [
+      "plant-research",
+      "classical",
+      "new-drug"
+    ],
+    "keywords": [
+      "benefit",
+      "sharing",
+      "share",
+      "communities",
+      "royalty",
+      "लाभ"
+    ]
+  },
+  {
+    "id": "tkdl-prior-art",
+    "text": "Documented traditional knowledge held in the Traditional Knowledge Digital Library is available to patent offices as prior art, so applications claiming that knowledge can be refused.",
+    "source": "TKDL Access Agreements (CSIR / Ministry of AYUSH)",
+    "jurisdiction": "india",
+    "product_types": [
+      "classical",
+      "plant-research",
+      "new-drug"
+    ],
+    "keywords": [
+      "prior",
+      "art",
+      "tkdl",
+      "someone",
+      "else",
+      "steal",
+      "copy",
+      "पूर्व"
+    ]
+  },
+  {
+    "id": "intl-territorial",
+    "text": "Patent rights are territorial: a patent granted in one country has effect only in that country, so protection abroad requires filing in or designating each country.",
+    "source": "Paris Convention — Article 4bis (independence of patents)",
+    "jurisdiction": "international",
+    "product_types": [
+      "export",
+      "new-drug",
+      "classical"
+    ],
+    "keywords": [
+      "outside",
+      "india",
+      "indian",
+      "territorial",
+      "automatically",
+      "everywhere"
+    ]
   }
 ]

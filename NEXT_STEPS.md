@@ -154,3 +154,13 @@ The default is now `MODE=auto`: **the three hero questions are answered from the
 Measured: hero questions 0.0s with no API call (English and Hindi), other questions ~3.5s via Gemini, unsupported question declines instantly. With the API key removed, hero questions still answer; other questions return 502.
 
 What this means for the demo: the rehearsed questions cannot fail, and the header badge reads SCRIPTED for them. Ask something off-script and it reads LIVE.
+
+---
+
+## ✅ Update — full demo conversations, not single questions
+
+Each hero scenario is now a **3-turn scripted conversation** (9 turns total), all answered instantly and offline with their own sources. The exact questions, the sources each one cites, and what to say while it loads are in **`data/demo_script.md`** — that is the run-of-show.
+
+Added 5 placeholder snippets for the follow-ups (trade mark, ASU labelling, benefit sharing, TKDL prior art, territoriality). **Yashvi: these texts are paraphrases and must be replaced with verified quotes**, same as the first five.
+
+Hindi covers the first question of each conversation; the follow-ups are English only.

@@ -33,6 +33,9 @@ Response `200`
   ],
   "confidence": "high",
   "declined": false,
+  "follow_ups": [
+    { "text": "If I cannot patent it, how do I protect my brand name?", "jurisdiction": "india", "product_type": "classical" }
+  ],
   "mode": "mock"
 }
 ```
@@ -43,6 +46,7 @@ Response `200`
 | sources | list of `{id, text, source}` | empty when `declined` is true |
 | confidence | string | `high` \| `med` \| `low` |
 | declined | bool | true = no source found, assistant refuses to guess. UI shows this state distinctly |
+| follow_ups | list of `{text, jurisdiction, product_type}` | next questions to offer as clickable chips; empty for live/declined answers. Clicking one sets both toggles, then asks it |
 | mode | string | where the answer came from: `scripted` (pre-written), `live` (Gemini), `mock` — badge/debugging only |
 
 Response `400` (bad input) / `502` (answer engine unavailable — show "try again")

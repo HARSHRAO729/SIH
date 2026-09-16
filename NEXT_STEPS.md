@@ -164,3 +164,14 @@ Each hero scenario is now a **3-turn scripted conversation** (9 turns total), al
 Added 5 placeholder snippets for the follow-ups (trade mark, ASU labelling, benefit sharing, TKDL prior art, territoriality). **Yashvi: these texts are paraphrases and must be replaced with verified quotes**, same as the first five.
 
 Hindi covers the first question of each conversation; the follow-ups are English only.
+
+---
+
+## ✅ Update — the demo clicks through itself
+
+Every scripted answer now returns its **follow-up questions**, and the UI shows them as *Continue the case* chips
+under the newest answer. Clicking a chip sets the jurisdiction + product category and asks the next question, so the
+whole demo is one chain of 10 turns: churna (3) → medicinal plant (3) → selling abroad (3) → the closer that declines.
+
+Contract change: the response carries `follow_ups: [{text, jurisdiction, product_type}]` (empty for live and declined
+answers). **Ritik:** this is in `CONTRACT.md`, and the chips are implemented in the clone.

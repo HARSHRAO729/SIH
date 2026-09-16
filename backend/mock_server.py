@@ -46,8 +46,8 @@ def reply_for(question, delay=0):
     q = question.lower()
     for key, reply in REPLIES.items():
         if key in q:
-            return {**reply, "declined": False, "mode": "mock"}
-    return {**DECLINED, "declined": True, "mode": "mock"}
+            return {**reply, "declined": False, "mode": "mock", "follow_ups": []}
+    return {**DECLINED, "declined": True, "mode": "mock", "follow_ups": []}
 
 
 if __name__ == "__main__":

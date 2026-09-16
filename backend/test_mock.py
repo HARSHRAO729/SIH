@@ -5,7 +5,7 @@ import engine
 from mock_server import reply_for
 from server import validate
 
-KEYS = {"answer", "sources", "confidence", "declined", "mode"}
+KEYS = {"answer", "sources", "confidence", "declined", "mode", "follow_ups"}
 
 
 def check_shape(r):
@@ -13,6 +13,8 @@ def check_shape(r):
     assert r["confidence"] in ("high", "med", "low")
     assert all(set(s) == {"id", "text", "source"} for s in r["sources"])
     assert r["declined"] == (not r["sources"]), r
+    assert isinstance(r["follow_ups"], list)
+    assert all({"text", "jurisdiction", "product_type"} == set(f) for f in r["follow_ups"]), r
 
 
 def ask(q, j="india", pt="unknown"):

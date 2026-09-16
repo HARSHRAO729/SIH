@@ -1,7 +1,10 @@
 # Demo script — the three hero conversations
 
 Every question below is answered **from the script**: instant, offline, no API call, same words every time.
-Set the toggles before each conversation, then type the questions in order. Hit "New case" between conversations.
+
+**You do not have to type anything after the first question.** Each answer ends with a *Continue the case* chip
+holding the next question — click it and the demo walks itself through all 10 turns, switching the India/Global
+toggle and the product category for you when the conversation changes. Typing still works if you prefer.
 
 Badge check: the header reads **SCRIPTED** for these. If it reads **LIVE**, you typed something off-script — still fine, just slower.
 
@@ -38,7 +41,7 @@ Toggles: **Global** · category **Export / international**
 
 ---
 
-## The closer — refusing to guess
+## The closer — refusing to guess (the last chip)
 Ask anything outside the pack, e.g. **What is the GST rate on soap?**
 The assistant declines instead of inventing law. Line to use:
 

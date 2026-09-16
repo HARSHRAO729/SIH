@@ -59,7 +59,7 @@ def cite(snippet):
 
 
 def declined(mode):
-    return {**DECLINED, "declined": True, "mode": mode}
+    return {**DECLINED, "declined": True, "mode": mode, "follow_ups": []}
 
 
 def scripted(question, jurisdiction, language="en"):
@@ -71,7 +71,9 @@ def scripted(question, jurisdiction, language="en"):
                 # optional answer_hi: the Hindi fallback, else English
                 text = s.get(f"answer_{language}", s["answer"])
                 return {"answer": text, "sources": sources, "confidence": s["confidence"],
-                        "declined": False, "mode": "scripted"}
+                        "declined": False, "mode": "scripted",
+                        # the next questions in the demo chain, for the UI to offer as chips
+                        "follow_ups": s.get("follow_ups", [])}
     return None
 
 
@@ -139,7 +141,8 @@ def live(body, llm):
     if out.get("declined") or not sources or not str(out.get("answer", "")).strip():
         return declined("live")
     confidence = out.get("confidence") if out.get("confidence") in ("high", "med", "low") else "low"
-    return {"answer": out["answer"], "sources": sources, "confidence": confidence, "declined": False, "mode": "live"}
+    return {"answer": out["answer"], "sources": sources, "confidence": confidence,
+            "declined": False, "mode": "live", "follow_ups": []}
 
 
 def answer(body, mode, llm=call_gemini):

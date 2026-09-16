@@ -11,7 +11,19 @@
       "trademark-india"
     ],
     "confidence": "high",
-    "answer": "The formulation itself is not patentable, but your brand is protectable. Registering a trade mark gives you the exclusive right to that name and logo for your goods, which is what stops a competitor selling a churna under your name."
+    "answer": "The formulation itself is not patentable, but your brand is protectable. Registering a trade mark gives you the exclusive right to that name and logo for your goods, which is what stops a competitor selling a churna under your name.",
+    "follow_ups": [
+      {
+        "text": "What do I need before I can sell it in the market?",
+        "jurisdiction": "india",
+        "product_type": "classical"
+      },
+      {
+        "text": "What obligations apply if I use a medicinal plant for research in India?",
+        "jurisdiction": "india",
+        "product_type": "plant-research"
+      }
+    ]
   },
   {
     "keywords": [
@@ -26,7 +38,14 @@
       "ayush-labelling"
     ],
     "confidence": "high",
-    "answer": "Two things before you can sell: a manufacturing licence for the ASU drug, and a label that carries the drug name, the licence number, the full list of ingredients and the words 'Ayurvedic medicine'."
+    "answer": "Two things before you can sell: a manufacturing licence for the ASU drug, and a label that carries the drug name, the licence number, the full list of ingredients and the words 'Ayurvedic medicine'.",
+    "follow_ups": [
+      {
+        "text": "What obligations apply if I use a medicinal plant for research in India?",
+        "jurisdiction": "india",
+        "product_type": "plant-research"
+      }
+    ]
   },
   {
     "keywords": [
@@ -41,7 +60,14 @@
       "abs-benefit-sharing"
     ],
     "confidence": "high",
-    "answer": "Yes. When the National Biodiversity Authority grants approval it also sets the terms for sharing benefits with the benefit claimers, including the local communities the resource or the knowledge came from."
+    "answer": "Yes. When the National Biodiversity Authority grants approval it also sets the terms for sharing benefits with the benefit claimers, including the local communities the resource or the knowledge came from.",
+    "follow_ups": [
+      {
+        "text": "Can someone else patent this traditional use?",
+        "jurisdiction": "india",
+        "product_type": "plant-research"
+      }
+    ]
   },
   {
     "keywords": [
@@ -57,7 +83,14 @@
       "tk-patent-bar"
     ],
     "confidence": "high",
-    "answer": "Documented traditional knowledge sits in the TKDL, which patent offices search as prior art, and Indian law already bars patents on traditional knowledge. Together those are what get such applications refused."
+    "answer": "Documented traditional knowledge sits in the TKDL, which patent offices search as prior art, and Indian law already bars patents on traditional knowledge. Together those are what get such applications refused.",
+    "follow_ups": [
+      {
+        "text": "What should I consider if I want to sell my product abroad?",
+        "jurisdiction": "international",
+        "product_type": "export"
+      }
+    ]
   },
   {
     "keywords": [
@@ -71,7 +104,14 @@
       "intl-madrid"
     ],
     "confidence": "high",
-    "answer": "One application under the Madrid Protocol covers the brand in many member countries at once, instead of filing a separate trade mark in each one."
+    "answer": "One application under the Madrid Protocol covers the brand in many member countries at once, instead of filing a separate trade mark in each one.",
+    "follow_ups": [
+      {
+        "text": "Does an Indian patent protect me outside India?",
+        "jurisdiction": "international",
+        "product_type": "export"
+      }
+    ]
   },
   {
     "keywords": [
@@ -87,7 +127,14 @@
       "intl-pct"
     ],
     "confidence": "high",
-    "answer": "No. Patents are territorial, so an Indian patent protects you only in India. To be covered elsewhere you have to file in those countries, and the PCT route lets you start that with a single international application."
+    "answer": "No. Patents are territorial, so an Indian patent protects you only in India. To be covered elsewhere you have to file in those countries, and the PCT route lets you start that with a single international application.",
+    "follow_ups": [
+      {
+        "text": "What is the GST rate on soap?",
+        "jurisdiction": "india",
+        "product_type": "unknown"
+      }
+    ]
   },
   {
     "keywords": [
@@ -100,7 +147,19 @@
       "ayush-licence"
     ],
     "answer": "A classical churna made from a formulation already described in authoritative AYUSH texts is not patentable in India, because it is traditional knowledge. You can still manufacture and sell it once you hold an AYUSH manufacturing licence for a classical (ASU) medicine.",
-    "confidence": "high"
+    "confidence": "high",
+    "follow_ups": [
+      {
+        "text": "If I cannot patent it, how do I protect my brand name?",
+        "jurisdiction": "india",
+        "product_type": "classical"
+      },
+      {
+        "text": "What do I need before I can sell it in the market?",
+        "jurisdiction": "india",
+        "product_type": "classical"
+      }
+    ]
   },
   {
     "keywords": [
@@ -113,7 +172,19 @@
       "abs-nba-approval"
     ],
     "answer": "Using an Indian medicinal plant for research or commercial use requires prior approval from the National Biodiversity Authority, and benefits may need to be shared with local communities.",
-    "confidence": "med"
+    "confidence": "med",
+    "follow_ups": [
+      {
+        "text": "Do I have to share benefits with local communities?",
+        "jurisdiction": "india",
+        "product_type": "plant-research"
+      },
+      {
+        "text": "Can someone else patent this traditional use?",
+        "jurisdiction": "india",
+        "product_type": "plant-research"
+      }
+    ]
   },
   {
     "keywords": [
@@ -128,6 +199,18 @@
       "intl-madrid"
     ],
     "answer": "To protect your product in several countries, you can file one international patent application under the PCT, and register your brand in many countries at once through the Madrid System.",
-    "confidence": "med"
+    "confidence": "med",
+    "follow_ups": [
+      {
+        "text": "How do I protect the brand in multiple countries?",
+        "jurisdiction": "international",
+        "product_type": "export"
+      },
+      {
+        "text": "Does an Indian patent protect me outside India?",
+        "jurisdiction": "international",
+        "product_type": "export"
+      }
+    ]
   }
 ]

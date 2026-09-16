@@ -30,8 +30,8 @@ BY_ID = {s["id"]: s for s in SNIPPETS}
 
 
 def tokens(text):
-    # [^\W_] keeps Devanagari too, so Hindi questions can match Hindi keywords
-    words = (t for t in re.findall(r"[^\W_]+", text.lower(), re.UNICODE) if len(t) > 2 and t not in STOPWORDS)
+    # the Devanagari range is explicit: \w drops the vowel marks and shatters Hindi words
+    words = (t for t in re.findall(r"[\w\u0900-\u097F]+", text.lower()) if len(t) > 2 and t not in STOPWORDS)
     return {t[:-1] if len(t) > 4 and t.endswith("s") else t for t in words}  # ponytail: plural strip, not a stemmer
 
 

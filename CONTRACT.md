@@ -43,7 +43,7 @@ Response `200`
 | sources | list of `{id, text, source}` | empty when `declined` is true |
 | confidence | string | `high` \| `med` \| `low` |
 | declined | bool | true = no source found, assistant refuses to guess. UI shows this state distinctly |
-| mode | string | `mock` \| `live` \| `scripted` — for debugging/badge only |
+| mode | string | where the answer came from: `scripted` (pre-written), `live` (Gemini), `mock` — badge/debugging only |
 
 Response `400` (bad input) / `502` (answer engine unavailable — show "try again")
 ```json
@@ -52,8 +52,9 @@ Response `400` (bad input) / `502` (answer engine unavailable — show "try agai
 
 ## GET /api/health
 ```json
-{ "ok": true, "mode": "mock" }
+{ "ok": true, "mode": "auto" }
 ```
+Server modes: `auto` (default — scripted answers first, Gemini for everything else), `live` (Gemini first, scripted on failure), `scripted` (offline only), `mock`.
 
 ## Snippet pack shape (Yashvi → Harsh)
 

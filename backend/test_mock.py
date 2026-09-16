@@ -66,9 +66,20 @@ r = engine.answer(body, "live", fake({"answer": "Trust me.", "used_ids": ["made-
 assert r["declined"] and r["mode"] == "live"
 
 # no snippet → declined, LLM never called
-def boom(prompt):
-    raise AssertionError("LLM called without sources")
-assert engine.answer(ask("What is the GST rate on soap?"), "live", boom)["declined"]
+def boom_if_called(prompt):
+    raise AssertionError("LLM called when it should not be")
+assert engine.answer(ask("What is the GST rate on soap?"), "live", boom_if_called)["declined"]
+
+# auto: hero questions answer from the script without touching the LLM
+for body, _ in HERO:
+    r = engine.answer(body, "auto", boom_if_called)
+    check_shape(r)
+    assert r["mode"] == "scripted", body
+
+# auto: anything the script does not cover goes to the LLM
+r = engine.answer(ask("traditional knowledge patent invention", pt="classical"), "auto",
+                  fake({"answer": "Not an invention.", "used_ids": ["tk-patent-bar"], "confidence": "med", "declined": False}))
+assert r["mode"] == "live" and not r["declined"], r
 
 # LLM failure on a hero question → scripted fallback
 def down(prompt):

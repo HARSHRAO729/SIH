@@ -144,3 +144,13 @@ Live answers work end to end: retrieval → Gemini → citation gate, in English
 - Typical live answer takes 4–7 seconds; Hindi can take ~15s.
 - Gemini occasionally returns 503, so the backend retries once, then falls back to the scripted answer. Rapid repeated questions can hit a 429 rate limit on the free tier — don't spam questions during the demo.
 - If the header badge says SCRIPTED during the demo, the API failed and the fallback saved it.
+
+---
+
+## ✅ Update — scripted first, Gemini as backup
+
+The default is now `MODE=auto`: **the three hero questions are answered from the script, instantly and offline**; anything else goes to Gemini, and an unsupported question still declines. The local Llama 1B was tried and dropped — it is fine-tuned for citation extraction, invented rules that were not in the passages, and produced unusable Hindi.
+
+Measured: hero questions 0.0s with no API call (English and Hindi), other questions ~3.5s via Gemini, unsupported question declines instantly. With the API key removed, hero questions still answer; other questions return 502.
+
+What this means for the demo: the rehearsed questions cannot fail, and the header badge reads SCRIPTED for them. Ask something off-script and it reads LIVE.

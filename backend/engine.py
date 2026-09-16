@@ -143,16 +143,23 @@ def live(body, llm):
 
 
 def answer(body, mode, llm=call_gemini):
+    """mock: canned. scripted: script only. auto: script first, Gemini for the rest. live: Gemini first."""
     if mode == "mock":
         return mock_reply(body["question"], MOCK_DELAY)
+
+    script = scripted(body["question"], body["jurisdiction"], body.get("language", "en"))
+
     if mode == "scripted":
-        return scripted(body["question"], body["jurisdiction"], body.get("language", "en")) or declined("scripted")
+        return script or declined("scripted")
+
+    if mode == "auto" and script:
+        return script  # instant, offline, and word-for-word what we rehearsed
+
     try:
         return live(body, llm)
     except Exception as e:
         # API/network/bad JSON → hero questions still answer from the script
-        print(f"live failed, trying scripted: {e!r}", file=sys.stderr)
-        fallback = scripted(body["question"], body["jurisdiction"], body.get("language", "en"))
-        if fallback:
-            return fallback
+        print(f"gemini failed, trying scripted: {e!r}", file=sys.stderr)
+        if script:
+            return script
         raise

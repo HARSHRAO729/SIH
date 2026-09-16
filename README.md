@@ -25,9 +25,10 @@ Keep the base URL in one config value — switching to the real backend is chang
 ## Real backend (Harsh)
 ```bash
 cp .env.example .env        # add GEMINI_API_KEY
-python3 backend/server.py   # MODE=scripted python3 backend/server.py for the no-internet demo
+python3 backend/server.py   # auto: scripted answers first, Gemini for the rest
 python3 backend/test_mock.py
 ```
-- `live`: picks matching snippets → Gemini → keeps only citations it was given. No snippet or no valid citation → `declined`.
-- If Gemini fails on a hero question, it answers from `data/scripted_answers.json`.
+- `auto` (default): a hero question is answered instantly from `data/scripted_answers.json` — no API call, works offline. Anything else goes to Gemini.
+- Gemini path: matching snippets → Gemini → keeps only the citations it was given. No snippet or no valid citation → `declined`.
+- `MODE=scripted` for a fully offline demo, `MODE=live` to force Gemini, `MODE=mock` for front-end work.
 - Uses `data/snippets.json` if present, else `data/snippets.sample.json`.

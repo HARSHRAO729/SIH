@@ -1,6 +1,6 @@
 """IP-SAKTI backend. Stdlib only.
 
-    python3 backend/server.py            # MODE from .env, default live
+    python3 backend/server.py            # MODE from .env, default auto
     MODE=scripted python3 backend/server.py
 """
 import json
@@ -79,12 +79,12 @@ def make_handler(mode):
 
 
 def serve(mode):
-    if mode not in ("live", "scripted", "mock"):
-        sys.exit("MODE must be live, scripted or mock")
+    if mode not in ("auto", "live", "scripted", "mock"):
+        sys.exit("MODE must be auto, live, scripted or mock")
     print(f"IP-SAKTI backend ({mode}) on http://localhost:{PORT}")
     ThreadingHTTPServer(("", PORT), make_handler(mode)).serve_forever()
 
 
 if __name__ == "__main__":
     load_env()
-    serve(os.environ.get("MODE", "live"))
+    serve(os.environ.get("MODE", "auto"))

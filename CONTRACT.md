@@ -69,6 +69,8 @@ Response `400` (bad input) / `502` (answer engine unavailable — show "try agai
 }
 ```
 
+`answer_hi` in `data/scripted_answers.json` (optional): the Hindi version of a scripted answer; English is used when it is missing.
+
 `keywords` (optional but important): plain words a user would type that the legal quote doesn't contain.
 Retrieval is keyword matching, so a snippet without them is hard to find (e.g. Section 3(p) never says "churna").
 See `data/snippets.sample.json`.

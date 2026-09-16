@@ -30,7 +30,8 @@ BY_ID = {s["id"]: s for s in SNIPPETS}
 
 
 def tokens(text):
-    words = (t for t in re.findall(r"[a-z0-9]+", text.lower()) if len(t) > 2 and t not in STOPWORDS)
+    # [^\W_] keeps Devanagari too, so Hindi questions can match Hindi keywords
+    words = (t for t in re.findall(r"[^\W_]+", text.lower(), re.UNICODE) if len(t) > 2 and t not in STOPWORDS)
     return {t[:-1] if len(t) > 4 and t.endswith("s") else t for t in words}  # ponytail: plural strip, not a stemmer
 
 
@@ -59,13 +60,15 @@ def declined(mode):
     return {**DECLINED, "declined": True, "mode": mode}
 
 
-def scripted(question, jurisdiction):
+def scripted(question, jurisdiction, language="en"):
     q = question.lower()
     for s in SCRIPTED:
         if s["jurisdiction"] == jurisdiction and any(k in q for k in s["keywords"]):
             sources = [cite(BY_ID[i]) for i in s["source_ids"] if i in BY_ID]
             if sources:
-                return {"answer": s["answer"], "sources": sources, "confidence": s["confidence"],
+                # optional answer_hi: the Hindi fallback, else English
+                text = s.get(f"answer_{language}", s["answer"])
+                return {"answer": text, "sources": sources, "confidence": s["confidence"],
                         "declined": False, "mode": "scripted"}
     return None
 
@@ -129,13 +132,13 @@ def answer(body, mode, llm=call_gemini):
     if mode == "mock":
         return mock_reply(body["question"], MOCK_DELAY)
     if mode == "scripted":
-        return scripted(body["question"], body["jurisdiction"]) or declined("scripted")
+        return scripted(body["question"], body["jurisdiction"], body.get("language", "en")) or declined("scripted")
     try:
         return live(body, llm)
     except Exception as e:
         # API/network/bad JSON → hero questions still answer from the script
         print(f"live failed, trying scripted: {e!r}", file=sys.stderr)
-        fallback = scripted(body["question"], body["jurisdiction"])
+        fallback = scripted(body["question"], body["jurisdiction"], body.get("language", "en"))
         if fallback:
             return fallback
         raise

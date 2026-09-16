@@ -112,3 +112,24 @@ Use this for "is this real RAG?": *"The demo retrieves from a curated pack by ke
 1. Add `GEMINI_API_KEY` to `.env`, test live answers.
 2. Load Yashvi's snippets; if good questions come back declined, lower `MIN_SCORE` to `1` in `.env` or ask her for more keywords.
 3. Integration test with Ritik → then Phase 3 (polish).
+
+---
+
+## ✅ Update — front-end connected to the backend
+
+Ritik's repo is cloned into `frontend/` (still his own repo — it is git-ignored here, push front-end changes from inside that folder).
+
+Run both:
+```bash
+MODE=scripted python3 backend/server.py    # terminal 1
+cd frontend && npm install && npm run dev  # terminal 2 → http://localhost:5173
+```
+
+Tested end to end against the scripted backend: all 3 hero questions answer with sources, an unsupported question shows the declined card, the server-down error + **Try Again** works, and the header shows the backend mode (LIVE / SCRIPTED / MOCK / SERVER OFFLINE).
+
+Backend changes that came out of it: retrieval now understands Hindi words, export keywords added, and `answer_hi` in `data/scripted_answers.json` is used for Hindi scripted answers (falls back to English).
+
+### Still open
+- **Yashvi:** Hindi scripted answers (`answer_hi`) + Hindi `keywords` on each snippet, or the Hindi demo answers in English.
+- **Harsh:** live mode still untested (no `GEMINI_API_KEY` yet).
+- **Ritik:** front-end fixes were made in the clone — review and merge them into your repo.

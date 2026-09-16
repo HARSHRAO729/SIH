@@ -15,7 +15,11 @@
       "formulation",
       "traditional",
       "ayurveda",
-      "invention"
+      "invention",
+      "चूर्ण",
+      "पेटेंट",
+      "शास्त्रीय",
+      "पारंपरिक"
     ]
   },
   {
@@ -35,7 +39,11 @@
       "churna",
       "classical",
       "ayurveda",
-      "market"
+      "market",
+      "बेच",
+      "चूर्ण",
+      "लाइसेंस",
+      "शास्त्रीय"
     ]
   },
   {
@@ -56,7 +64,12 @@
       "biodiversity",
       "benefit",
       "sharing",
-      "approval"
+      "approval",
+      "पौधा",
+      "पौधे",
+      "औषधीय",
+      "अनुसंधान",
+      "जैव"
     ]
   },
   {
@@ -76,7 +89,15 @@
       "countries",
       "patent",
       "protect",
-      "export"
+      "export",
+      "sell",
+      "product",
+      "market",
+      "selling",
+      "विदेश",
+      "अंतरराष्ट्रीय",
+      "पेटेंट",
+      "उत्पाद"
     ]
   },
   {
@@ -98,7 +119,15 @@
       "trademark",
       "protect",
       "export",
-      "selling"
+      "selling",
+      "sell",
+      "product",
+      "market",
+      "विदेश",
+      "अंतरराष्ट्रीय",
+      "ट्रेडमार्क",
+      "उत्पाद",
+      "बेचने"
     ]
   }
 ]

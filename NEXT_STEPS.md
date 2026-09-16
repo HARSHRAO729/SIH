@@ -133,3 +133,14 @@ Backend changes that came out of it: retrieval now understands Hindi words, expo
 - **Yashvi:** Hindi scripted answers (`answer_hi`) + Hindi `keywords` on each snippet, or the Hindi demo answers in English.
 - **Harsh:** live mode still untested (no `GEMINI_API_KEY` yet).
 - **Ritik:** front-end fixes were made in the clone — review and merge them into your repo.
+
+---
+
+## ✅ Update — live mode verified (Gemini working)
+
+Live answers work end to end: retrieval → Gemini → citation gate, in English and Hindi, with real sources attached.
+
+- Model is now **`gemini-3.6-flash`** (`gemini-2.5-flash` is retired for new API keys). Set it in `.env` with `GEMINI_MODEL`.
+- Typical live answer takes 4–7 seconds; Hindi can take ~15s.
+- Gemini occasionally returns 503, so the backend retries once, then falls back to the scripted answer. Rapid repeated questions can hit a 429 rate limit on the free tier — don't spam questions during the demo.
+- If the header badge says SCRIPTED during the demo, the API failed and the fallback saved it.

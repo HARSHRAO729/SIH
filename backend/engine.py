@@ -4,6 +4,8 @@ import os
 import re
 import ssl
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -93,7 +95,7 @@ def call_gemini(prompt):
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         raise RuntimeError("GEMINI_API_KEY not set")
-    model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+    model = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
         data=json.dumps({
@@ -104,9 +106,21 @@ def call_gemini(prompt):
     )
     # python.org builds on macOS ship without CA certs; the system bundle covers it
     ctx = ssl.create_default_context(cafile="/etc/ssl/cert.pem") if Path("/etc/ssl/cert.pem").exists() else None
-    with urllib.request.urlopen(req, timeout=20, context=ctx) as r:
-        data = json.load(r)
-    return data["candidates"][0]["content"]["parts"][0]["text"]
+    # Gemini throws the odd 503; one retry saves a fallback on stage
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(req, timeout=20, context=ctx) as r:
+                data = json.load(r)
+            return data["candidates"][0]["content"]["parts"][0]["text"]
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or attempt:
+                raise
+            print(f"gemini {e.code}, retrying", file=sys.stderr)
+        except (urllib.error.URLError, TimeoutError):
+            if attempt:
+                raise
+            print("gemini unreachable, retrying", file=sys.stderr)
+        time.sleep(1.5)
 
 
 def live(body, llm):
